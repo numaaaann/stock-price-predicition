@@ -1,22 +1,67 @@
-# Stock Price Prediction using LSTM
+# LSTM Stock Price Predictor
 
-This project uses a Long Short-Term Memory (LSTM) network to predict the closing stock price of Apple Inc. (AAPL) based on historical stock data. The model uses a time-series analysis technique to train on the past 60 days' closing stock prices and predicts future stock prices.
+This project uses a Recurrent Neural Network architecture, specifically **LSTM (Long Short-Term Memory)**, to predict the **closing stock price** of a company (Google: `GOOG`) based on historical data.
 
-## Project Overview
+---
 
-The model is built using the Keras library and trained on data from Yahoo Finance. The LSTM network is particularly well-suited for time-series forecasting due to its ability to remember long-term dependencies in sequential data.
+## 🔍 Overview
 
-### Key Features:
-- **Data Source:** Stock data for Apple Inc. (AAPL) fetched using Yahoo Finance API.
-- **Model:** LSTM-based neural network for time-series forecasting.
-- **Preprocessing:** Data normalization using MinMaxScaler.
-- **Prediction Output:** The model predicts the closing stock price for the next day.
-  
-## Installation
+Stock market prices exhibit time-dependent patterns. LSTM networks are ideal for time-series data because they can learn long-term dependencies. This project leverages an LSTM model trained on historical stock prices to predict future trends in closing prices.
 
-1. Clone the repository:
+---
 
-```bash
-git clone https://github.com/yourusername/stock-price-prediction-lstm.git
-cd stock-price-prediction-lstm
+## 📂 Project Workflow
 
+1. **Data Collection:**
+   - Used `yfinance` API to collect Google stock data from 2012 to 2023.
+
+2. **Data Preprocessing & EDA:**
+   - Checked for null values (none found).
+   - Visualized closing price trends.
+   - Normalized the data using `MinMaxScaler`.
+   - Created a 60-day sliding window to form training sequences.
+
+3. **Model Building:**
+   - Built a Sequential LSTM model with 2 LSTM layers and 2 Dense layers.
+   - Compiled with `adam` optimizer and `mean_squared_error` loss function.
+
+4. **Training & Evaluation:**
+   - Trained on 80% of the dataset.
+   - Evaluated on 20% using **Root Mean Square Error (RMSE)**.
+   - Plotted real vs predicted closing prices.
+
+5. **Prediction:**
+   - Model used to predict closing price based on the last 60 days.
+
+---
+
+## ⚙️ Technologies Used
+
+- Python
+- Pandas, NumPy
+- Matplotlib
+- Scikit-learn (MinMaxScaler)
+- Keras (TensorFlow backend)
+- yfinance
+
+---
+
+## 🌐 Project Structure
+
+```
+LSTM-Stock-Predictor/
+|
+|-- lstm_stock_prediction.ipynb        # Jupyter Notebook with full implementation
+|-- model_visuals/                     # Charts of predictions and actual prices
+|-- datasets/                          # (Optional) Exported stock data
+|-- README.md                          # Project overview
+```
+
+---
+
+## 📊 Evaluation Metric
+
+- **RMSE (Root Mean Squared Error)**
+- Helps evaluate how closely the model's predictions match real data.
+
+---
